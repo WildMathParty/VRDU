@@ -26,7 +26,7 @@ namespace UnityEngine.EventSystems
         public OVRCursor m_Cursor;
 
         [Tooltip("Gamepad button to act as gaze click")]
-        public OVRInput.Button joyPadClickButton = OVRInput.Button.One;
+        public OVRInput.Axis1D joyPadTrigger = OVRInput.Axis1D.SecondaryIndexTrigger;
 
         [Tooltip("Keyboard button to act as gaze click")]
         public KeyCode gazeClickKey = KeyCode.Space;
@@ -849,8 +849,8 @@ namespace UnityEngine.EventSystems
         /// <returns></returns>
         virtual protected PointerEventData.FramePressState GetGazeButtonState()
         {
-            var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.GetDown(joyPadClickButton);
-            var released = Input.GetKeyUp(gazeClickKey) || OVRInput.GetUp(joyPadClickButton);
+            var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.Get(joyPadTrigger) > 0.5f;
+            var released = Input.GetKeyUp(gazeClickKey) || OVRInput.Get(joyPadTrigger) == 0f;
 
 #if UNITY_ANDROID && !UNITY_EDITOR
             pressed |= Input.GetMouseButtonDown(0);

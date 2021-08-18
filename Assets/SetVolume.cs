@@ -11,6 +11,7 @@ public class SetVolume : MonoBehaviour
     public AudioMixer g2Mixer;
     public AudioMixer bassMixer;
     public AudioMixer voxMixer;
+    public AudioMixer backupVoxMixer;
 
     void SetLevel (float sliderValue, AudioMixer mixer, string mixerName)
     {
@@ -28,6 +29,10 @@ public class SetVolume : MonoBehaviour
     public void setVoxVolume(float sliderValue)
     {
         SetLevel(sliderValue, voxMixer, "VoxVolume");
+    }
+    public void setBackupVoxVolume(float sliderValue)
+    {
+        SetLevel(sliderValue, backupVoxMixer, "BackupVoxVolume");
     }
     public void setG1Volume(float sliderValue)
     {

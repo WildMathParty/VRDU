@@ -25,17 +25,11 @@ public class MuteInstruments : MonoBehaviour
     private bool voxMuted = false;
     [SerializeField] private UnityEngine.UI.Button voxBtn;
     [SerializeField] private AudioSource voxSource;
+    //BackupVocals
+    private bool backupVoxMuted = false;
+    [SerializeField] private UnityEngine.UI.Button backupVoxBtn;
+    [SerializeField] private AudioSource backupVoxSource;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private bool muteInstrument(bool instMuted, UnityEngine.UI.Button btn, AudioSource track)
     {
@@ -84,6 +78,10 @@ public class MuteInstruments : MonoBehaviour
     public void muteVox()
     {
         voxMuted = muteInstrument(voxMuted, voxBtn, voxSource);
+    }
+    public void muteBackupVox()
+    {
+        backupVoxMuted = muteInstrument(backupVoxMuted, backupVoxBtn, backupVoxSource);
     }
 
 }
